@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" serverName="flowrama">
+    <serverData>
+      <paths name="flowrama">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/www.flowrama.com/wp-content/plugins/d3-cpt-about" local="$PROJECT_DIR$" web="/wp-content/plugins/d3-cpt-about" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>
