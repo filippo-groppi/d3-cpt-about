@@ -2,7 +2,7 @@
 
 /**
 * Plugin Name: D3 CPT About
-* Plugin URI: https://www.derved.com/
+* Plugin URI: https://www.derved.com/d3-cpt-about
 * Description: Create About Custom Post Type
 * Version: 0.1
 * Author: DERVED®
@@ -22,3 +22,23 @@ function d3_cpt_about_register_post_type() {
 }
 
 add_action( 'init', 'd3_cpt_about_register_post_type' );
+
+function print_d3_cpt_about()  {
+    echo "<br>";
+    echo "<h1>D3 CPT About</h1>";
+    echo "<span>D3 CPT About is active on your site.</span>";
+    echo "<br><br>";
+    echo "<a href='https://www.derved.com/d3-cpt-about' target='_blank'>https://www.derved.com/d3-cpt-about</a>";
+}
+
+function d3_cpt_about_admin_menu()  {
+    add_menu_page(
+        'D3 CPT About', // page title
+        'D3 CPT About', // menu title
+        'manage_options', // capability
+        'd3-cpt-about', // menu slug
+        'print_d3_cpt_about'  // callback function
+  );  
+}
+
+add_action( 'admin_menu', 'd3_cpt_about_admin_menu' );
