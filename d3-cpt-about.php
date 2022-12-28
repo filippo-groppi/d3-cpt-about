@@ -18,7 +18,40 @@ if ( !function_exists( 'add_action' ) ) {
 $d3_cpt_about_plugin_dir_path = WP_PLUGIN_DIR . '/d3-cpt-about';
 
 function d3_cpt_about_register_post_type() {
-    include("templates/d3-cpt-about.php");
+    //include("templates/d3-cpt-about.php");
+
+    $labels = array(
+        'name' => __( 'About', 'd3' ),
+        'singular_name' => __( 'About', 'd3' ),
+        'add_new' => __( 'New About Section', 'd3' ),
+        'add_new_item' => __( 'Add New About Section', 'd3' ),
+        'edit_item' => __( 'Edit About Section', 'd3' ),
+        'new_item' => __( 'New About Section', 'd3' ),
+        'view_item' => __( 'View About Section', 'd3' ),
+        'search_items' => __( 'Search About Sections', 'd3' ),
+        'not_found' =>  __( 'No About Section Found', 'd3' ),
+        'not_found_in_trash' => __( 'No About Section found in Trash', 'd3' ),
+    );
+
+    $args = array(
+        'labels' => $labels,
+        'has_archive' => true,
+        'public' => true,
+        'hierarchical' => false,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'custom-fields',
+            'thumbnail',
+            'page-attributes'
+        ),
+        'taxonomies' => 'category',
+        'rewrite'   => array( 'slug' => 'about' ),
+        'show_in_rest' => true
+    );
+
+    register_post_type( 'd3_cpt_about', $args );
 }
 
 add_action( 'init', 'd3_cpt_about_register_post_type' );
