@@ -109,7 +109,8 @@ function d3_cpt_about_admin_menu()
             'D3 Suite', // menu title
             'manage_options', // capability
             'd3-suite', // menu slug
-            'd3_cpt_about_print_d3_suite'  // callback function
+            'd3_cpt_about_print_d3_suite',  // callback function
+            'dashicons-admin-customizer'
         );
     }
     d3_cpt_about_admin_submenu();
