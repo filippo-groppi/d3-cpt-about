@@ -2,7 +2,7 @@
 
 /**
 * Plugin Name: D3 CPT About
-* Plugin URI: https://www.derved.com/d3-cpt-about
+* Plugin URI: https://www.derved.com/wp-plugins/d3-suite/d3-cpt-about
 * Description: Create About Custom Post Type
 * Version: 0.1
 * Author: DERVED®
@@ -18,7 +18,6 @@ if ( !function_exists( 'add_action' ) ) {
 $d3_cpt_about_plugin_dir_path = WP_PLUGIN_DIR . '/d3-cpt-about';
 
 function d3_cpt_about_register_post_type() {
-    //include("templates/d3-cpt-about.php");
 
     $labels = array(
         'name' => __( 'About', 'd3' ),
@@ -56,22 +55,64 @@ function d3_cpt_about_register_post_type() {
 
 add_action( 'init', 'd3_cpt_about_register_post_type' );
 
+
+/**
+ * Submenu Content
+ */
+
 function print_d3_cpt_about()  {
-    echo "<br>";
-    echo "<h1>D3 CPT About</h1>";
-    echo "<span>D3 CPT About is active on your site.</span>";
-    echo "<br><br>";
-    echo "<a href='https://www.derved.com/d3-cpt-about' target='_blank'>https://www.derved.com/d3-cpt-about</a>";
+    include("templates/d3-submenu-page-content.php");
 }
 
-function d3_cpt_about_admin_menu()  {
-    add_menu_page(
+
+/**
+ * Submenu Page
+ */
+
+function d3_cpt_about_admin_submenu()  {
+    add_submenu_page(
+        'd3-suite',
         'D3 CPT About', // page title
         'D3 CPT About', // menu title
         'manage_options', // capability
         'd3-cpt-about', // menu slug
         'print_d3_cpt_about'  // callback function
-  );  
+    );
+}
+
+
+/**
+ * Menu Content
+ */
+
+function d3_cpt_about_print_d3_suite()  {
+    include("templates/d3-suite-page-content.php");
+}
+
+
+/**
+ * Menu Page
+ */
+
+function d3_cpt_about_admin_menu()
+{
+    global $menu;
+    $menuExist = false;
+    foreach ($menu as $item) {
+        if (strtolower($item[0]) == strtolower('D3 Suite')) {
+            $menuExist = true;
+        }
+    }
+    if (!$menuExist) {
+        add_menu_page(
+            'D3 Suite', // page title
+            'D3 Suite', // menu title
+            'manage_options', // capability
+            'd3-suite', // menu slug
+            'd3_cpt_about_print_d3_suite'  // callback function
+        );
+    }
+    d3_cpt_about_admin_submenu();
 }
 
 add_action( 'admin_menu', 'd3_cpt_about_admin_menu' );
