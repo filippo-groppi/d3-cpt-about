@@ -20,7 +20,7 @@ $d3_cpt_about_plugin_dir_path = WP_PLUGIN_DIR . '/d3-cpt-about';
 function d3_cpt_about_register_post_type() {
 
     $labels = array(
-        'name' => __( 'About', 'd3' ),
+        'name' => __( 'D3 About', 'd3' ),
         'singular_name' => __( 'About', 'd3' ),
         'add_new' => __( 'New About Section', 'd3' ),
         'add_new_item' => __( 'Add New About Section', 'd3' ),
