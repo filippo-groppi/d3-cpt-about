@@ -47,6 +47,8 @@ function d3_cpt_about_register_post_type() {
         ),
         'taxonomies' => 'category',
         'rewrite'   => array( 'slug' => 'about' ),
+        'show_ui' => true,
+        'show_in_menu' => 'd3-cpts',
         'show_in_rest' => true
     );
 
@@ -117,3 +119,33 @@ function d3_cpt_about_admin_menu()
 }
 
 add_action( 'admin_menu', 'd3_cpt_about_admin_menu' );
+
+
+
+/**
+ * Menu Page
+ */
+
+function d3_cpt_about_d3_cpts_menu()
+{
+    global $menu;
+    $menuExist = false;
+    foreach ($menu as $item) {
+        if (strtolower($item[0]) == strtolower('D3 CPTs')) {
+            $menuExist = true;
+        }
+    }
+    if (!$menuExist) {
+        add_menu_page(
+            'D3 CPTs', // page title
+            'D3 CPTs', // menu title
+            'manage_options', // capability
+            'd3-cpts', // menu slug
+            'd3_cpt_about_print_d3_cpts',  // callback function
+            'dashicons-admin-customizer'
+        );
+    }
+}
+
+add_action( 'admin_menu', 'd3_cpt_about_d3_cpts_menu' );
+
