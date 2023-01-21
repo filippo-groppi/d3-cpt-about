@@ -142,7 +142,8 @@ function d3_cpt_about_d3_cpts_menu()
             'manage_options', // capability
             'd3-cpts', // menu slug
             'd3_cpt_about_print_d3_cpts',  // callback function
-            'dashicons-admin-customizer'
+            'dashicons-admin-post',
+            5
         );
     }
 }
