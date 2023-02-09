@@ -2,8 +2,8 @@
 Contributors: d3
 Donate link: https://www.derved.com/
 Tags: d3, d3-cpt-about
-Requires at least: 6.0
-Tested up to: 6.0
+Requires at least: 5.0
+Tested up to: 6.1.1
 Stable tag: 0.1
 Requires PHP: 8.0
 License: GPLv2 or later
